@@ -114,7 +114,7 @@ Merged subcounty and district data to create a combined enriched master dataset:
 
 ## Exploratory Data Analysis
 
-### District Production Comparison
+#### District Production Comparison
 
 ![District Production](viz_images/prod.png)
 
@@ -122,7 +122,7 @@ Merged subcounty and district data to create a combined enriched master dataset:
 
 ---
 
-### Crop Yield Distributions
+#### Crop Yield Distributions
 
 ![Crop Yield Distributions](viz_images/yield.png)
 
@@ -130,7 +130,7 @@ Maize yields show a **positive** distribution (1000–1200 kg/ha peak), while so
 
 ---
 
-### Correlation Analysis
+#### Correlation Analysis
 
 ![Correlation Heatmap](viz_images/corr.png)
 
@@ -138,7 +138,7 @@ Strong correlation between crop yields suggests shared environmental factors. We
 
 ---
 
-### Tableau Dashboard
+#### Tableau Dashboard
 
 This dataset was further visualized in Tableau for detailed interactive analysis. This further reinforced our findings as below:
 
