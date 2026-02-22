@@ -7,9 +7,11 @@
 ![Seaborn](https://img.shields.io/badge/Seaborn-0.12+-lightblue.svg)
 ![Geo](https://img.shields.io/badge/Geospatial-Shapefile-green.svg)
 
-A comprehensive data analysis of agricultural production in Uganda's Karamoja region, examining sorghum and maize yields across 7 districts and 52 subcounties to assess food security patterns and inform targeted interventions.
+Karamoja is the most food-insecure region of Uganda. One of the main reasons is the low productivity of crops due to intense droughts as well as pest and disease outbreaks. 
 
----
+To help NGOs provide technical support and prioritize interventions, this project presents a comprehensive data analysis of agricultural production in Karamoja, examining sorghum and maize yields across 7 districts and 52 subcounties to assess food security patterns and inform targeted interventions.
+
+
 
 ## Table of Contents
 
@@ -22,7 +24,6 @@ A comprehensive data analysis of agricultural production in Uganda's Karamoja re
 - [Technical Implementation](#technical-implementation)
 - [Future Development](#future-development)
 
----
 
 ## Project Overview
 
@@ -96,51 +97,61 @@ subcounty_df = pd.read_csv("TABLES/Uganda_Karamoja_Subcounty_Crop_Yield_Populati
 -  **Population dynamics** and land use efficiency
 
 ### 2. Feature Engineering
-•	Calculated per capita production metrics to factor in the population in estimating food security levels.
+•	Calculated **Per Capita Production** metrics to factor in the population in estimating food security levels.
 
-•	Derived land use efficiency scores to establish which districts could be prioritized on agricultural support and training.
+•	Derived **Land Use Efficiency** scores to establish which districts could be prioritized on agricultural support and training.
 
-•	Aggregated district-level totals for maize and sorghum to determine the combined output.
+•	Aggregated **district-level totals** for maize and sorghum to determine the combined output.
 
 ### 3. Data Integration
 Merged subcounty and district data to create a combined enriched master dataset:
 
-python```
-master_df = pd.merge(subcounty_df, district_df, 
+```python
+  master_df = pd.merge(subcounty_df, district_df, 
                      left_on='DISTRICT_NAME', right_on='DNAME')
-                     ```
-### 4. Exploratory Data Analysis
+```
 
-### District Production Comparison
 
-![District Production](viz_images/district_prod.png)
+## Exploratory Data Analysis
 
-Kotido leads production at 18.6 million kg, while Moroto underperforms at 1 million kg, indicating significant regional disparities.
+#### District Production Comparison
+
+![District Production](viz_images/prod.png)
+
+**Kotido** leads production at 18.6 million kg, while **Moroto** underperforms at 1 million kg, indicating significant regional disparities.
 
 ---
 
-### Crop Yield Distributions
+#### Crop Yield Distributions
 
 ![Crop Yield Distributions](viz_images/yield.png)
 
-Maize yields show a positive distribution (1000–1200 kg/ha peak), while sorghum shows a negative distribution (100–300 kg/ha peak), indicating that maize is more established across the region.
+Maize yields show a **positive** distribution (1000–1200 kg/ha peak), while sorghum shows a **negative** distribution (100–300 kg/ha peak), indicating that maize is more established across the region.
 
 ---
 
-### Correlation Analysis
+#### Correlation Analysis
 
-![Correlation Heatmap](viz_images\corr.png)
+![Correlation Heatmap](viz_images/corr.png)
 
 Strong correlation between crop yields suggests shared environmental factors. Weak population–land use correlation indicates the need for agricultural education.
 
-### Tableau Dashboard
+---
 
-This dataset was further visualized in Tableau for detailed interactive analysis.
+#### Tableau Dashboard
+
+This dataset was further visualized in Tableau for detailed interactive analysis. This further reinforced our findings as below:
+
+1. Moroto district should be a top priority in the as the intervention status places all its districts under high priority level.
+2. Sorghum is always cultivated on a bigger land mass than maize. Whether this is cultural or climatic will inform on what farm inputs/ agricultural training    to support the communities with.
+3. The most land-use efficient district, Nakapiripirit, has quite a low per capita productivity while the inverse is true for Kotido which has poor land use     efficiency but excellent per capita productivity.
 
 **Link:**  
 https://public.tableau.com/app/profile/mochama7964/viz/KaramojaCropAnalysis_17716932392280/KaramojaDashboard?publish=yes
 
-![Karamoja Crop Dashboard](viz_images\tableau.png)
+![Karamoja Crop Dashboard](viz_images/tableau.png)
+
+---
 
 ## Key Findings
 
@@ -152,7 +163,7 @@ Kotido district leads with 18.6 million kg in total production, while Moroto pro
 
 - Maize significantly outperforms sorghum, with average yields of 940 kg/ha versus 274 kg/ha.
 - Maize shows strong, consistent production, with most subcounties achieving 1000–1200 kg/ha.
-- Sorghum underperforms, with most subcounties producing only 100–300 kg/ha.
+- Sorghum underperforms, with most subcounties producing only 100–300 kg/ha. This is despite the area of sorghum always being significantly higher than that   of maize
 - These patterns confirm maize as the more established crop, while sorghum presents clear opportunities for improvement.
 
 #### 3. Correlation Insights
@@ -161,16 +172,19 @@ Kotido district leads with 18.6 million kg in total production, while Moroto pro
 - Weak correlation (0.1) between population and land use efficiency
 - Negligible relationship between maize and sorghum cultivation areas
 
----
 
 ## Recommendations
 
 - Prioritize intensive agricultural interventions in Moroto district, which shows extreme underperformance.
 - Implement sorghum improvement programs across all subcounties to address yield gaps.
-- Expand agricultural training initiatives region-wide due to weak population–land use correlation.
+- Expand agricultural training initiatives region-wide due to weak population–land use correlation as well as poor sorghum yields per hectare.
 - Establish ongoing per capita production monitoring to identify food-insecure subcounties.
 
----
+
+## Future Development
+
+   Enrich our dataset with time factor so we can analyze progress over the years from the intervention and possibly perform predictive analysis.
+
 
 ## Technical Implementation
 
@@ -180,3 +194,5 @@ Kotido district leads with 18.6 million kg in total production, while Moroto pro
 - Matplotlib and Seaborn for visualization
 - Tableau for dashboard development
 - Jupyter Notebook for documentation and reproducibility
+
+---
