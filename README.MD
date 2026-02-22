@@ -100,11 +100,11 @@ subcounty_df = pd.read_csv("TABLES/Uganda_Karamoja_Subcounty_Crop_Yield_Populati
 -  **Population dynamics** and land use efficiency
 
 ### 2. Feature Engineering
-•	Calculated per capita production metrics to factor in the population in estimating food security levels.
+•	Calculated **Per Capita Production** metrics to factor in the population in estimating food security levels.
 
-•	Derived land use efficiency scores to establish which districts could be prioritized on agricultural support and training.
+•	Derived **Land Use Efficiency** scores to establish which districts could be prioritized on agricultural support and training.
 
-•	Aggregated district-level totals for maize and sorghum to determine the combined output.
+•	Aggregated **district-level totals** for maize and sorghum to determine the combined output.
 
 ### 3. Data Integration
 Merged subcounty and district data to create a combined enriched master dataset:
@@ -119,7 +119,7 @@ master_df = pd.merge(subcounty_df, district_df,
 
 ![District Production](viz_images/prod.png)
 
-Kotido leads production at 18.6 million kg, while Moroto underperforms at 1 million kg, indicating significant regional disparities.
+**Kotido** leads production at 18.6 million kg, while **Moroto** underperforms at 1 million kg, indicating significant regional disparities.
 
 ---
 
@@ -139,7 +139,11 @@ Strong correlation between crop yields suggests shared environmental factors. We
 
 ### Tableau Dashboard
 
-This dataset was further visualized in Tableau for detailed interactive analysis.
+This dataset was further visualized in Tableau for detailed interactive analysis. This further reinforced our findings as below:
+
+- Moroto district should be a top priority in the as the intervention status places all its districts under high priority level.
+- Sorghum is always cultivated more than maize. Whether this is cultural or climatic will inform on what farm inputs to support the communities with.
+- The most land-use efficient district, Nakapiripirit, has quite a low per capita productivity while the inverse is true for Kotido which has poor land use     efficiency but excellent per capita productivity.
 
 **Link:**  
 https://public.tableau.com/app/profile/mochama7964/viz/KaramojaCropAnalysis_17716932392280/KaramojaDashboard?publish=yes
