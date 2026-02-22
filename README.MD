@@ -113,7 +113,7 @@ master_df = pd.merge(subcounty_df, district_df,
 
 ### District Production Comparison
 
-![District Production](viz_images/district_prod.png)
+![District Production](viz_images/prod.png)
 
 Kotido leads production at 18.6 million kg, while Moroto underperforms at 1 million kg, indicating significant regional disparities.
 
@@ -129,7 +129,7 @@ Maize yields show a positive distribution (1000–1200 kg/ha peak), while sorghu
 
 ### Correlation Analysis
 
-![Correlation Heatmap](viz_images\corr.png)
+![Correlation Heatmap](viz_images/corr.png)
 
 Strong correlation between crop yields suggests shared environmental factors. Weak population–land use correlation indicates the need for agricultural education.
 
@@ -140,7 +140,7 @@ This dataset was further visualized in Tableau for detailed interactive analysis
 **Link:**  
 https://public.tableau.com/app/profile/mochama7964/viz/KaramojaCropAnalysis_17716932392280/KaramojaDashboard?publish=yes
 
-![Karamoja Crop Dashboard](viz_images\tableau.png)
+![Karamoja Crop Dashboard](viz_images/tableau.png)
 
 ## Key Findings
 
@@ -176,7 +176,7 @@ Kotido district leads with 18.6 million kg in total production, while Moroto pro
 
 - Python for data processing and analysis
 - Pandas and NumPy for data manipulation
-- GeoPandas for spatial analysis
+- Shapefile for spatial analysis
 - Matplotlib and Seaborn for visualization
 - Tableau for dashboard development
 - Jupyter Notebook for documentation and reproducibility
