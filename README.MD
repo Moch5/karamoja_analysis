@@ -13,8 +13,6 @@ To help NGOs provide technical support and prioritize interventions, this projec
 
 
 
----
-
 ## Table of Contents
 
 - [Project Overview](#project-overview)
@@ -26,7 +24,6 @@ To help NGOs provide technical support and prioritize interventions, this projec
 - [Technical Implementation](#technical-implementation)
 - [Future Development](#future-development)
 
----
 
 ## Project Overview
 
@@ -79,7 +76,6 @@ Features: District name, population, area, crop yields, production totals
 Shape: (52 rows, 13 columns)
 Features: Subcounty name, district, population, yields, crop areas, production
 ```
----
 
 ## Data Understanding
 
@@ -115,9 +111,8 @@ Merged subcounty and district data to create a combined enriched master dataset:
                      left_on='DISTRICT_NAME', right_on='DNAME')
 ```
 
----
 
-### 4. Exploratory Data Analysis
+## Exploratory Data Analysis
 
 ### District Production Comparison
 
@@ -140,6 +135,8 @@ Maize yields show a **positive** distribution (1000–1200 kg/ha peak), while so
 ![Correlation Heatmap](viz_images/corr.png)
 
 Strong correlation between crop yields suggests shared environmental factors. Weak population–land use correlation indicates the need for agricultural education.
+
+---
 
 ### Tableau Dashboard
 
@@ -175,7 +172,6 @@ Kotido district leads with 18.6 million kg in total production, while Moroto pro
 - Weak correlation (0.1) between population and land use efficiency
 - Negligible relationship between maize and sorghum cultivation areas
 
----
 
 ## Recommendations
 
@@ -184,7 +180,6 @@ Kotido district leads with 18.6 million kg in total production, while Moroto pro
 - Expand agricultural training initiatives region-wide due to weak population–land use correlation as well as poor sorghum yields per hectare.
 - Establish ongoing per capita production monitoring to identify food-insecure subcounties.
 
----
 
 ## Future Development
 
@@ -199,3 +194,5 @@ Kotido district leads with 18.6 million kg in total production, while Moroto pro
 - Matplotlib and Seaborn for visualization
 - Tableau for dashboard development
 - Jupyter Notebook for documentation and reproducibility
+
+---
