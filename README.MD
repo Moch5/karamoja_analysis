@@ -109,8 +109,7 @@ subcounty_df = pd.read_csv("TABLES/Uganda_Karamoja_Subcounty_Crop_Yield_Populati
 ### 3. Data Integration
 Merged subcounty and district data to create a combined enriched master dataset:
 
-python```
-
+```python
   master_df = pd.merge(subcounty_df, district_df, 
                      left_on='DISTRICT_NAME', right_on='DNAME')
                      ```
