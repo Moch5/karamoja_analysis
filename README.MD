@@ -121,7 +121,7 @@ Kotido leads production at 18.6 million kg, while Moroto underperforms at 1 mill
 
 ### Crop Yield Distributions
 
-![Crop Yield Distributions](viz_images\crop_yield_hist.png)
+![Crop Yield Distributions](viz_images/yield.png)
 
 Maize yields show a positive distribution (1000–1200 kg/ha peak), while sorghum shows a negative distribution (100–300 kg/ha peak), indicating that maize is more established across the region.
 
@@ -140,7 +140,7 @@ This dataset was further visualized in Tableau for detailed interactive analysis
 **Link:**  
 https://public.tableau.com/app/profile/mochama7964/viz/KaramojaCropAnalysis_17716932392280/KaramojaDashboard?publish=yes
 
-![Karamoja Crop Dashboard](viz_images/Karamoja Crop Dashboard.png)
+![Karamoja Crop Dashboard](viz_images\tableau.png)
 
 ## Key Findings
 
