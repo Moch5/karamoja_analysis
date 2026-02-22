@@ -176,7 +176,7 @@ Kotido district leads with 18.6 million kg in total production, while Moroto pro
 
 - Python for data processing and analysis
 - Pandas and NumPy for data manipulation
-- GeoPandas for spatial analysis
+- Shapefile for spatial analysis
 - Matplotlib and Seaborn for visualization
 - Tableau for dashboard development
 - Jupyter Notebook for documentation and reproducibility
