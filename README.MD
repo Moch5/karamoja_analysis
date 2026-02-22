@@ -110,7 +110,8 @@ subcounty_df = pd.read_csv("TABLES/Uganda_Karamoja_Subcounty_Crop_Yield_Populati
 Merged subcounty and district data to create a combined enriched master dataset:
 
 python```
-master_df = pd.merge(subcounty_df, district_df, 
+
+  master_df = pd.merge(subcounty_df, district_df, 
                      left_on='DISTRICT_NAME', right_on='DNAME')
                      ```
 ### 4. Exploratory Data Analysis
@@ -127,7 +128,7 @@ master_df = pd.merge(subcounty_df, district_df,
 
 ![Crop Yield Distributions](viz_images/yield.png)
 
-Maize yields show a positive distribution (1000–1200 kg/ha peak), while sorghum shows a negative distribution (100–300 kg/ha peak), indicating that maize is more established across the region.
+Maize yields show a **positive** distribution (1000–1200 kg/ha peak), while sorghum shows a **negative** distribution (100–300 kg/ha peak), indicating that maize is more established across the region.
 
 ---
 
@@ -141,9 +142,9 @@ Strong correlation between crop yields suggests shared environmental factors. We
 
 This dataset was further visualized in Tableau for detailed interactive analysis. This further reinforced our findings as below:
 
-- Moroto district should be a top priority in the as the intervention status places all its districts under high priority level.
-- Sorghum is always cultivated more than maize. Whether this is cultural or climatic will inform on what farm inputs to support the communities with.
-- The most land-use efficient district, Nakapiripirit, has quite a low per capita productivity while the inverse is true for Kotido which has poor land use     efficiency but excellent per capita productivity.
+1. Moroto district should be a top priority in the as the intervention status places all its districts under high priority level.
+2. Sorghum is always cultivated on a bigger land mass than maize. Whether this is cultural or climatic will inform on what farm inputs/ agricultural training    to support the communities with.
+3. The most land-use efficient district, Nakapiripirit, has quite a low per capita productivity while the inverse is true for Kotido which has poor land use     efficiency but excellent per capita productivity.
 
 **Link:**  
 https://public.tableau.com/app/profile/mochama7964/viz/KaramojaCropAnalysis_17716932392280/KaramojaDashboard?publish=yes
@@ -160,7 +161,7 @@ Kotido district leads with 18.6 million kg in total production, while Moroto pro
 
 - Maize significantly outperforms sorghum, with average yields of 940 kg/ha versus 274 kg/ha.
 - Maize shows strong, consistent production, with most subcounties achieving 1000–1200 kg/ha.
-- Sorghum underperforms, with most subcounties producing only 100–300 kg/ha.
+- Sorghum underperforms, with most subcounties producing only 100–300 kg/ha. This is despite the area of sorghum always being significantly higher than that   of maize
 - These patterns confirm maize as the more established crop, while sorghum presents clear opportunities for improvement.
 
 #### 3. Correlation Insights
@@ -175,10 +176,15 @@ Kotido district leads with 18.6 million kg in total production, while Moroto pro
 
 - Prioritize intensive agricultural interventions in Moroto district, which shows extreme underperformance.
 - Implement sorghum improvement programs across all subcounties to address yield gaps.
-- Expand agricultural training initiatives region-wide due to weak population–land use correlation.
+- Expand agricultural training initiatives region-wide due to weak population–land use correlation as well as poor sorghum yields per hectare.
 - Establish ongoing per capita production monitoring to identify food-insecure subcounties.
 
 ---
+
+## Future Development
+
+   Enrich our dataset with time factor so we can analyze progress over the years from the intervention and possibly perform predictive analysis.
+
 
 ## Technical Implementation
 
