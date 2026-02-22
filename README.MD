@@ -112,7 +112,7 @@ Merged subcounty and district data to create a combined enriched master dataset:
 ```python
   master_df = pd.merge(subcounty_df, district_df, 
                      left_on='DISTRICT_NAME', right_on='DNAME')
-                     ```
+```
 ### 4. Exploratory Data Analysis
 
 ### District Production Comparison
