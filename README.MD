@@ -1,149 +1,164 @@
-Karamoja Agricultural Analysis
-https://img.shields.io/badge/python-3.8+-blue.svg
-https://img.shields.io/badge/Jupyter-Notebook-orange.svg
-https://img.shields.io/badge/License-MIT-yellow.svg
+# Karamoja Agricultural Production Analysis
 
-A comprehensive analysis of agricultural production data from the Karamoja region of Uganda, examining sorghum and maize yields to assess food security patterns across districts and subcounties.
+![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
+![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange.svg)
+![Pandas](https://img.shields.io/badge/pandas-1.3.0+-brightgreen.svg)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-📋 Overview
-This project analyzes crop production data from Karamoja, Uganda's most food-insecure region, to understand agricultural productivity patterns and inform food security interventions. The analysis examines relationships between population, land use, and crop yields at both district and subcounty levels.
+A comprehensive data analysis of agricultural production in Uganda's Karamoja region, examining sorghum and maize yields across 7 districts and 52 subcounties to assess food security patterns and inform targeted interventions.
 
-Final Notebook: karamoja_analysis.ipynb
+---
 
-💼 Business Understanding
-Stakeholders
-Uganda Ministry of Agriculture - Policy makers and agricultural planners
+## Table of Contents
 
-Food security NGOs - Organizations working in the Karamoja region
+- [Project Overview](#project-overview)
+- [Data Architecture](#data-architecture)
+- [Data Understanding](#data-understanding)
+- [Methodology](#methodology)
+- [Exploratory Data Analysis](#exploratory-data-analysis)
+- [Key Findings](#key-findings)
+- [Recommendations](#recommendations)
+- [Technical Implementation](#technical-implementation)
+- [Future Development](#future-development)
 
-Local government officials - District and subcounty administrators
+---
 
-Agricultural extension services - Field workers and agricultural advisors
+## Project Overview
 
-Key Business Questions
-Which districts and subcounties have the highest/lowest agricultural productivity?
+This analysis investigates agricultural productivity in Karamoja, Uganda's most food-insecure region, using district and subcounty-level data. By examining relationships between population, land use, and crop yields, this project provides actionable insights for food security interventions.
 
-How do maize and sorghum yields compare across the region?
+### Core Business Questions
 
-What is the relationship between population density and land use efficiency?
+1. Which districts and subcounties have the highest and lowest agricultural productivity?
+2. How do maize and sorghum yields compare across the region?
+3. What is the relationship between population density and land use efficiency?
+4. Which areas are most food secure based on per capita production?
 
-Which areas are most food secure based on per capita production?
+### Primary Stakeholders
 
-Are there patterns in crop performance that could inform intervention strategies?
+| Stakeholder                     | Role                                  |
+|---------------------------------|---------------------------------------|
+| Uganda Ministry of Agriculture  | Policy development and resource allocation |
+| Food Security NGOs              | Program targeting and intervention design |
+| Local Government Officials      | District and subcounty planning       |
+| Agricultural Extension Services | Field-level technical support         |
 
-📊 Data Understanding and Analysis
-Data Source
-The data comes from agricultural surveys and population records for the Karamoja region, containing:
+---
 
-7 districts with aggregated agricultural metrics
+## Data Architecture
 
-52 subcounties with detailed production information
+### Data Sources
 
-Variables include crop yields, planted areas, total production, and population
+- **Shapefiles**
+  - District boundaries
+  - Subcounty boundaries
+  - Crop type maps
 
-Data Description
-Variable	Description	Level
-S_Yield_Ha	Sorghum yield (kg/hectare)	Subcounty
-M_Yield_Ha	Maize yield (kg/hectare)	Subcounty
-POP	Population	Subcounty
-Crop_Area_Ha	Total crop area (hectares)	Subcounty
-Land_Use_Efficiency	(Crop Area / Total Area) × 100	Engineered
-S_Prod_Per_Capita	Sorghum production per person	Engineered
-District Prod	Total district production (kg)	District
-Key Visualizations
-1. District-Level Production Comparison
-https://images/district_production.png
-Total crop production by district showing Kotido as the highest producer (~18.6M kg) and Moroto as the lowest (~1M kg).
+- **CSV Tables**
+  - Production data
+  - Population records
+  - Agricultural metrics
 
-2. Crop Yield Distributions
-https://images/yield_distributions.png
-*Maize yields show positive distribution (1000-1200 kg/ha peak), while sorghum shows negative distribution (100-300 kg/ha peak), indicating maize is more established across the region.*
+### Dataset Structure
 
-3. Correlation Analysis
-https://images/correlation_heatmap.png
-*Strong correlation (0.48) between maize and sorghum yields suggests both crops respond similarly to conditions. Weak population-land use correlation indicates population doesn't drive land efficiency.*
+#### District Level (`district_df`)
+```python
+Shape: (7 rows, 11 columns)
+Features: District name, population, area, crop yields, production totals
 
-📈 Conclusion
-Three Key Findings
-District Disparities: Kotido leads in agricultural production (18.6M kg), while Moroto significantly underperforms (1M kg), suggesting targeted interventions are needed in low-producing areas.
+#### Subcounty Level (subcounty_df)
 
-Crop Specialization: Maize production is more established across subcounties (peak 1000-1200 kg/ha) compared to sorghum (peak 100-300 kg/ha), indicating potential for sorghum improvement programs.
+Shape: (52 rows, 13 columns)
+Features: Subcounty name, district, population, yields, crop areas, production
+```
 
-Population-Agriculture Disconnect: Weak correlation (0.1) between population and land use efficiency suggests that higher population density does not automatically lead to better agricultural practices, highlighting the need for agricultural education and extension services regardless of population levels.
+## Data Understanding
+### 1. Data Loading & Inspection
+``` python
+# Load shapefiles for spatial analysis
+district_shp = read_shp("SHAPEFILES/Uganda_Districts.shp")
+subcounty_shp = read_shp("SHAPEFILES/Uganda_Subcounties.shp")
 
-Recommendations
-Focus agricultural interventions on low-performing districts like Moroto
+# Load production data
+district_df = pd.read_csv("TABLES/Uganda_Karamoja_District_Crop_Yield_Population.csv")
+subcounty_df = pd.read_csv("TABLES/Uganda_Karamoja_Subcounty_Crop_Yield_Population.csv")
+```
 
-Develop sorghum improvement programs to boost yields toward maize levels
+**Key Metrics:**
+-  **7 Districts** with aggregated agricultural data
+-  **52 Subcounties** with detailed production information  
+-  **Maize & Sorghum** yield analysis
+-  **Population dynamics** and land use efficiency
 
-Implement agricultural training programs independent of population density
+### 2. Feature Engineering
+•	Calculated per capita production metrics
+•	Derived land use efficiency scores
+•	Aggregated district-level totals
 
-Use per capita production metrics to identify truly food-insecure subcounties
+### 3. Data Integration
+Merged subcounty and district data to create enriched master dataset:
+python
+master_df = pd.merge(subcounty_df, district_df, 
+                     left_on='DISTRICT_NAME', right_on='DNAME')
+                     ```
+### 4. Exploratory Data Analysis
 
-🛠️ Technical Details
-Dependencies
-text
-pandas
-matplotlib
-seaborn
-jupyter
-Installation
-bash
-git clone https://github.com/Moch5/karamoja_analysis.git
-cd karamoja_analysis
-pip install pandas matplotlib seaborn jupyter
-jupyter notebook karamoja_analysis.ipynb
-Output Files
-The analysis generates three processed datasets in the TABLES/ directory:
+### District Production Comparison
 
-karamoja_district.csv - District-level aggregates
+Kotido leads production at 18.6 million kg, while Moroto underperforms at 1 million kg, indicating significant regional disparities.
 
-karamoja_subcounty.csv - Subcounty data with per capita metrics
+### Crop Yield Distributions
 
-karamoja_master.csv - Merged dataset with all variables
+Maize yields show a positive distribution (1000–1200 kg/ha peak), while sorghum shows a negative distribution (100–300 kg/ha peak), indicating that maize is more established across the region.
 
-📁 Repository Organization
-text
-karamoja_analysis/
-│
-├── README.md                       # Project documentation
-├── .gitignore                       # Git ignore file
-├── karamoja_analysis.ipynb          # Final analysis notebook
-│
-├── notebooks/                        # Exploratory notebooks
-│   └── (working notebooks from team members)
-│
-├── TABLES/                           # Data directory
-│   ├── Uganda_Karamoja_District_Crop_Yield_Population.csv
-│   ├── Uganda_Karamoja_Subcounty_Crop_Yield_Population.csv
-│   ├── karamoja_district.csv        # Processed output
-│   ├── karamoja_subcounty.csv       # Processed output
-│   └── karamoja_master.csv          # Merged output
-│
-└── images/                           # Visualizations
-    ├── district_production.png
-    ├── yield_distributions.png
-    └── correlation_heatmap.png
-🔄 Commit History
-The repository maintains a clear commit history showing:
+### Correlation Analysis
 
-Initial data loading and exploration
+Strong correlation between crop yields suggests shared environmental factors. Weak population–land use correlation indicates the need for agricultural education.
 
-Feature engineering additions
+### Tableau Dashboard
 
-Visualization development
+This dataset was further visualized in Tableau for detailed interactive analysis.
 
-Analysis refinements
+**Link:**  
+https://public.tableau.com/app/profile/mochama7964/viz/KaramojaCropAnalysis_17716932392280/KaramojaDashboard?publish=yes
 
-Documentation updates
+---
 
-Final presentation preparation
+## Key Findings
 
-👥 Contributors
-Team members contributed through individual exploratory notebooks and collaborative analysis.
+### 1. Dramatic Production Disparities
 
-📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+Kotido district leads with 18.6 million kg in total production, while Moroto produces only 1 million kg, representing an 18-fold difference and signaling an urgent need for targeted support.
 
-🙏 Acknowledgments
-Uganda Ministry of Agriculture for data provision
+### 2. Crop Performance Patterns
+
+- Maize significantly outperforms sorghum, with average yields of 940 kg/ha versus 274 kg/ha.
+- Maize shows strong, consistent production, with most subcounties achieving 1000–1200 kg/ha.
+- Sorghum underperforms, with most subcounties producing only 100–300 kg/ha.
+- These patterns confirm maize as the more established crop, while sorghum presents clear opportunities for improvement.
+
+### 3. Correlation Insights
+
+- Strong correlation (0.48) between maize and sorghum yields
+- Weak correlation (0.1) between population and land use efficiency
+- Negligible relationship between maize and sorghum cultivation areas
+
+---
+
+## Recommendations
+
+- Prioritize intensive agricultural interventions in Moroto district, which shows extreme underperformance.
+- Implement sorghum improvement programs across all subcounties to address yield gaps.
+- Expand agricultural training initiatives region-wide due to weak population–land use correlation.
+- Establish ongoing per capita production monitoring to identify food-insecure subcounties.
+
+---
+
+## Technical Implementation
+
+- Python for data processing and analysis
+- Pandas and NumPy for data manipulation
+- GeoPandas for spatial analysis
+- Matplotlib and Seaborn for visualization
+- Tableau for dashboard development
+- Jupyter Notebook for documentation and reproducibility
