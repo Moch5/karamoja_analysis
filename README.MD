@@ -79,6 +79,7 @@ Features: District name, population, area, crop yields, production totals
 Shape: (52 rows, 13 columns)
 Features: Subcounty name, district, population, yields, crop areas, production
 ```
+---
 
 ## Data Understanding
 
@@ -113,6 +114,9 @@ Merged subcounty and district data to create a combined enriched master dataset:
   master_df = pd.merge(subcounty_df, district_df, 
                      left_on='DISTRICT_NAME', right_on='DNAME')
 ```
+
+---
+
 ### 4. Exploratory Data Analysis
 
 ### District Production Comparison
@@ -149,6 +153,8 @@ This dataset was further visualized in Tableau for detailed interactive analysis
 https://public.tableau.com/app/profile/mochama7964/viz/KaramojaCropAnalysis_17716932392280/KaramojaDashboard?publish=yes
 
 ![Karamoja Crop Dashboard](viz_images/tableau.png)
+
+---
 
 ## Key Findings
 
