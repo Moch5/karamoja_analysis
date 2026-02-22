@@ -7,7 +7,10 @@
 ![Seaborn](https://img.shields.io/badge/Seaborn-0.12+-lightblue.svg)
 ![Geo](https://img.shields.io/badge/Geospatial-Shapefile-green.svg)
 
-A comprehensive data analysis of agricultural production in Uganda's Karamoja region, examining sorghum and maize yields across 7 districts and 52 subcounties to assess food security patterns and inform targeted interventions.
+Karamoja is the most food-insecure region of Uganda. One of the main reasons is the low productivity of crops due to intense droughts as well as pest and disease outbreaks. 
+To help NGOs provide technical support and prioritize interventions, this project presents a comprehensive data analysis of agricultural production in Karamoja, examining sorghum and maize yields across 7 districts and 52 subcounties to assess food security patterns and inform targeted interventions.
+
+
 
 ---
 
