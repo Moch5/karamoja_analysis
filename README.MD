@@ -11,7 +11,9 @@ Karamoja is the most food-insecure region of Uganda. One of the main reasons is 
 
 To help NGOs provide technical support and prioritize interventions, this project presents a comprehensive data analysis of agricultural production in Karamoja, examining sorghum and maize yields across 7 districts and 52 subcounties to assess food security patterns and inform targeted interventions.
 
+![Pokot Settlement in Eastern Karamoja in Uganda](viz_images/karamoja.jpg)
 
+---
 
 ## Table of Contents
 
